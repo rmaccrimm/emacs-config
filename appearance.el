@@ -19,7 +19,9 @@
                       :background "#282a36")
   (set-face-attribute 'line-number nil
                       :background "#282a36"
-                      :foreground "#78787e"))
+                      :foreground "#78787e")
+  (set-face-attribute 'fringe nil
+                      :background "#282a36"))
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)

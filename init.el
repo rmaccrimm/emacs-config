@@ -7,4 +7,13 @@
 (setq inhibit-startup-screen t)
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 
-(load-file "./appearance.el")
+(setq-default electric-pair-mode t)
+
+(use-package mic-paren
+  :config
+  (paren-activate))
+
+(load-file "appearance.el")
+(load-file "company.el")
+(load-file "helm.el")
+
