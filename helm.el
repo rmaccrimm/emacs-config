@@ -8,6 +8,10 @@
          ("C-x C-f" . helm-find-files)
          ("\C-c\C-m" . helm-M-x)))
 
+(use-package helm-swoop
+  :bind (("C-s" . helm-swoop)))
+
+
 ;; Use a bunch of advising to hid the dotfiles when listing directories in helm-find-files
 ;; Found online, don't really know how it works so I just leave it alone
 
