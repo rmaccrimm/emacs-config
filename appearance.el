@@ -27,3 +27,4 @@
 (add-to-list 'default-frame-alist '(font . "Fira Code-14"))
 (set-frame-font "Fira Code-14" nil t)
 
+(set-window-scroll-bars (minibuffer-window) nil nil)
