@@ -1,4 +1,5 @@
 (use-package helm
+  :ensure t
   :config
   (setq helm-M-x-fuzzy-match t
         helm-split-window-in-side-p t 
@@ -9,6 +10,7 @@
          ("\C-c\C-m" . helm-M-x)))
 
 (use-package helm-swoop
+  :ensure t
   :bind (("C-s" . helm-swoop)))
 
 

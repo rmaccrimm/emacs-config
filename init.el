@@ -10,6 +10,7 @@
 (setq-default electric-pair-mode t)
 
 (use-package mic-paren
+  :ensure t
   :config
   (paren-activate))
 

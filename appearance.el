@@ -1,8 +1,10 @@
 (use-package display-line-numbers
+  :ensure t
   :config
   (global-display-line-numbers-mode))
 
 (use-package fill-column-indicator
+  :ensure t
   :config
   (setq-default fill-column 99)
   (setq-default fci-rule-color "#3E4451")
@@ -11,6 +13,7 @@
   (global-fci-mode 1))
 
 (use-package snazzy-theme
+  :ensure t
   :config
   (load-theme 'snazzy t)
   (set-face-attribute 'cursor nil
