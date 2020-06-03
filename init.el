@@ -16,8 +16,8 @@
   :config
   (paren-activate))
 
-(load-file "appearance.el")
-(load-file "helm.el")
-(load-file "lsp.el")
-(load-file "company.el")
-(load-file "rust.el")
+(load-file "~/.config/emacs/appearance.el")
+(load-file "~/.config/emacs/helm.el")
+(load-file "~/.config/emacs/lsp.el")
+(load-file "~/.config/emacs/company.el")
+(load-file "~/.config/emacs/rust.el")
