@@ -22,9 +22,10 @@
 (global-set-key (kbd "C--") 'shrink-window-horizontally)
 
 (load-file "~/.config/emacs/term.el")
-(load-file "~/.config/emacs/appearance.el")
+(load-file "~/.config/emacs/theme.el")
 (load-file "~/.config/emacs/helm.el")
 (load-file "~/.config/emacs/lsp.el")
 (load-file "~/.config/emacs/company.el")
+(load-file "~/.config/emacs/common.el")
 (load-file "~/.config/emacs/rust.el")
-
+(load-file "~/.config/emacs/python.el")

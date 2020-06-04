@@ -1,17 +1,3 @@
-(use-package display-line-numbers
-  :ensure t
-  :config
-  (global-display-line-numbers-mode))
-
-(use-package fill-column-indicator
-  :ensure t
-  :config
-  (setq-default fill-column 99)
-  (setq-default fci-rule-color "#3E4451")
-  (define-globalized-minor-mode global-fci-mode fci-mode
-    (lambda () (fci-mode 1)))
-  (global-fci-mode 1))
-
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 (load-theme 'snazzy-custom t)
 (set-face-attribute 'cursor nil
