@@ -1,3 +1,6 @@
 (use-package python-mode
   :ensure t
-  :hooks (python-mode . lsp))
+  :config
+  :hook ((python-mode . lsp)
+	 (python-mode . company-mode)))
+

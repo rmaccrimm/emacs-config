@@ -1,6 +1,6 @@
 (use-package company
-  :hook
-  (prog-mode . company-mode)
+  ;; :hook
+  ;; (prog-mode . company-mode)
   :config
   (setq company-tooltip-align-annotations t)
   (setq company-minimum-prefix-length 1)
