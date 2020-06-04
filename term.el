@@ -1,0 +1,30 @@
+(defun toggle-line-comment ()
+  (interactive)
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+
+(defun toggle-term-buffer ()
+  (interactive)
+  (if (get-buffer "*terminal*")
+      (if (string= (buffer-name (current-buffer)) "*terminal*")
+          (if (= (count-windows) 1)
+              (switch-to-buffer (other-buffer))
+            (other-window -1))
+        (if (= (count-windows) 1)
+            (switch-to-buffer "*terminal*")
+          (switch-to-buffer-other-window "*terminal*")))
+    (other-window -1)
+    (term "/usr/bin/zsh")))
+
+(defun toggle-term-input-mode ()
+  (interactive)
+  (if (term-in-line-mode)
+      (term-char-mode)
+    (term-line-mode)))
+
+(add-hook 'term-mode-hook
+	  (lambda ()
+	    (display-line-numbers-mode 0)
+	    (fci-mode 0)))
+
+(global-set-key (kbd "C-`") 'toggle-term-buffer)
+(global-set-key (kbd "C-'") 'toggle-term-input-mode)
