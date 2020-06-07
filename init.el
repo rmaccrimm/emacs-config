@@ -26,6 +26,10 @@
 (load-file "~/.config/emacs/helm.el")
 (load-file "~/.config/emacs/lsp.el")
 (load-file "~/.config/emacs/company.el")
+
+;; TODO - may want to defer loading these until the mode is activated
 (load-file "~/.config/emacs/common.el")
 (load-file "~/.config/emacs/rust.el")
 (load-file "~/.config/emacs/python.el")
+(load-file "~/.config/emacs/haskell.el")
+(load-file "~/.config/emacs/elm.el")
