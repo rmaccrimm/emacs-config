@@ -6,9 +6,15 @@
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode
-  :config (setq lsp-ui-sideline-enable 1))
+  :config (setq lsp-ui-sideline-enable nil))
 
 (use-package flycheck
   :ensure t)
-(use-package flycheck-inline
+
+(use-package posframe
   :ensure t)
+
+(use-package flycheck-posframe
+  :ensure t
+  :hook
+  (flycheck-mode . flycheck-posframe-mode))
