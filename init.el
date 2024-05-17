@@ -52,10 +52,10 @@
 		    :background "#282a36")
 
 (add-to-list 'default-frame-alist
-	     '(font . "Consolas-14")
+	     '(font . "Fira Code-14")
 	     '(vertical-scroll-bars . nil))
 
-(set-frame-font "Consolas-14" nil t)
+(set-frame-font "Fira Code-14" nil t)
 
 (set-window-scroll-bars (minibuffer-window) nil nil)
 (menu-bar-mode -1)
@@ -86,18 +86,22 @@
 (use-package lsp-mode
   :requires lsp-clients
   :commands lsp)
+
 (use-package lsp-ui
-  :commands lsp-ui-mode
+  ;; :commands lsp-ui-mode
   :config
   (setq lsp-ui-sideline-enable 1)
   (setq lsp-ui-doc-enable 1)
   (setq lsp-ui-doc-show-with-cursor 1)
-  (setq lsp-ui-doc-show-with-mouse 0)
-  )
+  (setq lsp-ui-doc-show-with-mouse 0))
+
 
 (use-package flycheck
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  :hook
+  (prog-mode . flycheck-mode)
+  (flycheck-mode . lsp-ui-mode))
+
+
 
 ;; helm.el
 (use-package helm
@@ -143,6 +147,7 @@
 (global-set-key (kbd "C-=") 'enlarge-window-horizontally)
 (global-set-key (kbd "C--") 'shrink-window-horizontally)
 
+;; (use-package ccls)
 
 ;; company.el
 (use-package company
@@ -154,7 +159,16 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
-(add-hook 'after-init-hook 'global-company-mode)
+(use-package company-c-headers
+  :config
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/13/"))
+
+(use-package company-lsp
+  :config
+  (add-to-list 'company-backends 'company-lsp))
+;; (add-to-list 'company-c-headers-path-system "/usr/include/c++/13")
+
 
 ;; Godot
 (use-package gdscript-mode
@@ -162,7 +176,9 @@
                :type git
                :host github
                :repo "godotengine/emacs-gdscript-mode")
-    :hook ((gdscript-mode . lsp)))
+    :hook
+    (gdscript-mode . lsp)
+    (gdscript-mode . company-mode))
 
 (use-package magit)
 
@@ -172,12 +188,26 @@
        (display-line-numbers-mode 0)
        (scroll-bar-mode 0))))
 
-;; (use-package format-all
-  ;; :commands format-all-mode
-  ;; :hook (prog-mode . format-all-mode)
-  ;; :config
-  ;; (setq-default format-all-formatters
-                ;; '(("gdscript" (gdformat)))))
+(use-package auctex
+  :hook
+  ((LaTeX-mode
+    . (lambda nil
+        (visual-line-mode)
+        (LaTeX-math-mode)
+        (turn-on-reftex))))
+  :config
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
+  (setq reftex-plug-into-AUCTeX t)
+  (setq TeX-PDF-mode t))
+
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-source-correlate-start-server t)
+
+(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+(use-package pdf-tools)
 
 
 (server-start)
@@ -188,6 +218,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(indent-tabs-mode nil)
+ '(ring-bell-function 'ignore)
  '(visible-bell t)
  '(warning-suppress-types '((lsp-mode))))
 (custom-set-faces
