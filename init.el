@@ -82,6 +82,8 @@
   (setq-default fill-column 99)
   (setq-default fci-rule-color "#3E4451"))
 
+(setq ccls-executable "/usr/bin/ccls")
+
 ;; lsp.el
 (use-package lsp-mode
   :requires lsp-clients
@@ -95,6 +97,10 @@
   (setq lsp-ui-doc-show-with-cursor 1)
   (setq lsp-ui-doc-show-with-mouse 0))
 
+(use-package ccls
+  :hook
+  ((c-mode c++-mode objc-mode) .
+   (lambda () (require 'ccls) (lsp))))
 
 (use-package flycheck
   :hook
@@ -164,9 +170,12 @@
   (add-to-list 'company-backends 'company-c-headers)
   (add-to-list 'company-c-headers-path-system "/usr/include/c++/13/"))
 
-(use-package company-lsp
-  :config
-  (add-to-list 'company-backends 'company-lsp))
+;; (use-package company-lsp)
+;; (push 'company-lsp company-backends)
+
+
+  ;; :config
+  ;; (add-to-list 'company-backends 'company-lsp))
 ;; (add-to-list 'company-c-headers-path-system "/usr/include/c++/13")
 
 
