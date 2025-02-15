@@ -1,6 +1,21 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+(if (eq system-type 'darwin)
+    ;; Use command for meta instead of option
+    (setq mac-option-key-is-meta nil
+	  mac-command-key-is-meta t
+	  mac-command-modifier 'meta
+	  mac-option-modifier 'none)
+  )
+
+(setq initial-frame-alist
+      (append initial-frame-alist
+              '((left   . 0.5)
+                (top    . 0.3)
+                (width  . 105)
+                (height . 40))))
+
 (setq inhibit-startup-screen t
       backup-directory-alist '(("" . "~/.emacs.d/backup"))
       delete-old-versions t)
