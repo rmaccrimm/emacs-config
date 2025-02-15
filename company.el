@@ -1,4 +1,5 @@
 (use-package company
+  :ensure t
   :config
   (setq company-tooltip-align-annotations t)
   (setq company-minimum-prefix-length 1)

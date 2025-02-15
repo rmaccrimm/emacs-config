@@ -6,16 +6,23 @@
       delete-old-versions t)
 
 (require 'package)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 (eval-when-compile (require 'use-package))
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(use-package gnu-elpa-keyring-update
+  :ensure t)
 
 (use-package mic-paren
   :ensure t
   :config
   (paren-activate))
 (setq-default electric-pair-mode t)
+
+(use-package magit
+  :ensure t)
 
 (load-file "~/.config/emacs/term.el")
 (load-file "~/.config/emacs/theme.el")

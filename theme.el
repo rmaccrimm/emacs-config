@@ -1,3 +1,5 @@
+(use-package base16-theme
+    :ensure t)
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
 (load-theme 'snazzy-custom t)
 (set-face-attribute 'cursor nil
