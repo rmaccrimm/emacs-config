@@ -34,9 +34,15 @@
   :ensure t
   :config
   (paren-activate))
-(setq-default electric-pair-mode t)
 
 (use-package magit
+  :ensure t)
+
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'c++-mode-hook 'lsp-mode)
+(setq ring-bell-function 'ignore)
+
+(use-package yasnippet
   :ensure t)
 
 (load-file "~/.config/emacs/term.el")
@@ -44,10 +50,8 @@
 (load-file "~/.config/emacs/helm.el")
 (load-file "~/.config/emacs/lsp.el")
 (load-file "~/.config/emacs/company.el")
-
-;; TODO - may want to defer loading these until the mode is activated
 (load-file "~/.config/emacs/common.el")
 (load-file "~/.config/emacs/rust.el")
 (load-file "~/.config/emacs/python.el")
-(load-file "~/.config/emacs/haskell.el")
 (load-file "~/.config/emacs/elm.el")
+

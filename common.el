@@ -8,7 +8,8 @@
   :config
   (setq-default fill-column 99)
   (setq-default fci-rule-color "#3E4451")
-  :hook (prog-mode . fci-mode))
+  ;; :hook (prog-mode . fci-mode)
+  )
 
 (global-set-key (kbd "C-;") 'toggle-line-comment)
 (global-set-key (kbd "C-=") 'enlarge-window-horizontally)
