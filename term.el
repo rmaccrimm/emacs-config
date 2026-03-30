@@ -13,7 +13,7 @@
             (switch-to-buffer "*terminal*")
           (switch-to-buffer-other-window "*terminal*")))
     (other-window -1)
-    (term "/usr/bin/zsh")))
+    (term "/bin/zsh")))
 
 (defun toggle-term-input-mode ()
   (interactive)

@@ -50,8 +50,11 @@
 (load-file "~/.config/emacs/company.el")
 (load-file "~/.config/emacs/common.el")
 (load-file "~/.config/emacs/rust.el")
-(load-file "~/.config/emacs/python.el")
+(load-file "~/.config/emacs/org.el")
 (load-file "~/.config/emacs/elm.el")
+
+(use-package lua-mode
+  :ensure t)
 
 (defun lsp-booster--advice-json-parse (old-fn &rest args)
   "Try to parse bytecode instead of json."
@@ -86,3 +89,6 @@
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'c++-mode-hook 'lsp)
+(add-hook 'sh-mode-hook 'lsp)
+
+(load-file "~/.config/emacs/python.el")

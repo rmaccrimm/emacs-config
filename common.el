@@ -14,3 +14,11 @@
 (global-set-key (kbd "C-;") 'toggle-line-comment)
 (global-set-key (kbd "C-=") 'enlarge-window-horizontally)
 (global-set-key (kbd "C--") 'shrink-window-horizontally)
+
+(setq scroll-step 1)
+(setq pixel-scroll-precision-mode 1)
+
+(use-package multiple-cursors
+  :ensure t)
+
+(global-set-key (kbd "C-c c") 'mc/edit-lines)
