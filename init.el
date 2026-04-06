@@ -26,6 +26,12 @@
 
 (eval-when-compile (require 'use-package))
 
+(unless (package-installed-p 'quelpa)
+  (with-temp-buffer
+    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
+
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (use-package gnu-elpa-keyring-update
   :ensure t)

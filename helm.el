@@ -9,6 +9,7 @@
          ("C-x C-f" . helm-find-files)
          ("\C-c\C-m" . helm-M-x)))
 
-(use-package helm-swoop
-  :ensure t
-  :bind (("C-s" . helm-swoop)))
+(quelpa
+ '(helm-swoop
+   :fetcher git
+   :url "https://github.com/emacsattic/helm-swoop.git"))
