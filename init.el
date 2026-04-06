@@ -49,6 +49,13 @@
 (use-package yasnippet
   :ensure t)
 
+;; Org-mode configuration
+(use-package org
+  :config
+  (add-hook 'org-mode-hook (lambda ()
+			     (visual-line-mode)
+			     (org-indent-mode))))
+
 (load-file "~/.config/emacs/term.el")
 (load-file "~/.config/emacs/theme.el")
 (load-file "~/.config/emacs/helm.el")
